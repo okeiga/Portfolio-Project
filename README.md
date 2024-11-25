@@ -4,7 +4,7 @@
 
 #### **Overview**
 
-This project utilizes two datasets, `covid_deaths` and `covid_vaccinations`, to analyze global trends and insights related to COVID-19 cases, deaths, testing, and vaccination. 
+This project uses two datasets, `covid_deaths` and `covid_vaccinations`, to analyze global trends and insights related to COVID-19 deaths and vaccinations. 
 The analysis was conducted using MySQL queries, focusing on patterns such as total_deaths, new_deaths, and people_fully_vaccinated.
 
 ---
@@ -16,9 +16,9 @@ The analysis was conducted using MySQL queries, focusing on patterns such as tot
 
 2. **Tables Created**:
    - **`covid_deaths`**:
-     Contains data on COVID-19 deaths, and hospital admissions across various countries and continents.
+     Contains data on COVID-19 deaths such as new deaths, total deaths and hospital admissions across various countries and continents.
    - **`covid_vaccinations`**:
-     Contains vaccination statistics and population in different continents.
+     Contains vaccination statistics such as new_tests, total_tests and location.
 
 3. **Data Import**:
    - Datasets were imported using the `LOAD DATA INFILE` command. Necessary adjustments to the `secure_file_priv` setting were made to enable file imports. Set it to ""
@@ -38,7 +38,7 @@ The analysis was conducted using MySQL queries, focusing on patterns such as tot
 ##### **Key Analyses**
 
 1. **Total Cases and Deaths**:
-   - Query to calculate the death percentage for countries like the United States:
+   - Query to calculate the total_deaths vs total_cases for countries like the United States:
      ```sql
      SELECT continent, location, date, total_cases, total_deaths, 
             (total_deaths/total_cases)*100 AS death_percentage
@@ -48,7 +48,7 @@ The analysis was conducted using MySQL queries, focusing on patterns such as tot
      ```
 
 2. **Infection Rate by Population**:
-   - Query to calculate the percentage of the population infected:
+   - Query to calculate the percentage of the population infected with covid:
      ```sql
      SELECT location, date, total_cases, population, 
             (total_cases/population)*100 AS cases_percentage
